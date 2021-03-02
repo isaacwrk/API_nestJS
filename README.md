@@ -7,6 +7,6 @@
  - [x] Create a NestJs Application with npm package,
  - [x] use Swagger to create API,
  
- - [ ] Connect with PostgreSQL,
+ - [x] Connect with PostgreSQL,
  
  - [ ] Create Full CRUD
