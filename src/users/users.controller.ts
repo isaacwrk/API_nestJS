@@ -3,19 +3,20 @@ import { UsersService } from './users.service';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { User } from './interfaces/user.interface';
 import { ApiBody } from '@nestjs/swagger';
+import { UserEntity } from './database/user.entity';
 
 @Controller('users')
 export class UsersController {
     constructor(private readonly UsersService: UsersService){}
 
     @Get()
-    index(): User[]{
-        return this.UsersService.findAll();
+    async index(): Promise<UserEntity[]>{
+        return await this.UsersService.findAll();
     }
     
     @Post()
     @ApiBody({type: UserDto})
-    create(@Body() user: UserDto): User {
-        return this.UsersService.create(user);
+    async create(@Body() user: UserDto): Promise<UserEntity> {
+        return await this.UsersService.create(user);
     }
 }
